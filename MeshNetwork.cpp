@@ -49,7 +49,7 @@ void MeshNetwork::MakeAdjMatrix(){
   }
   int i,j;
   for(i=0;i<NODES;i++){
-      Node node(i,NODES);
+      Node node(i,NODES,&AdjMatrix);
       Nodes[i] = node;
   }
   for(j =0;j<NODES;j++){

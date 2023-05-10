@@ -30,12 +30,13 @@ protected:
           int LinkLength2;
           int LinkLength3;
           int NodeNum;
+          std::vector<std::vector<int>>* adjmatrix;
           
 
 public:
     //Constructors
           Node();
-          Node(int ID, int NodeNum);
+          Node(int ID, int NodeNum,std::vector<std::vector<int>>* adjmatrix);
 
     
     //Getters

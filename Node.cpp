@@ -4,7 +4,7 @@
 //Constructors
           Node::Node(){}
           
-          Node::Node(int ID, int NodeNum): ID(ID), NodeNum(NodeNum){
+          Node::Node(int ID, int NodeNum,std::vector<std::vector<int>>* adjmatrix): ID(ID), NodeNum(NodeNum),adjmatrix(adjmatrix){
                 std::cout<<"New Node Created: "<<ID<<std::endl;
                 STATUS = 1;
                 SetLinkLengths();
@@ -83,7 +83,7 @@
           void Node::AddPacket(int id){
                   std::random_device rd;
                   std::mt19937 gen(rd());
-                  std::uniform_int_distribution<int> dis(1,NodeNum);
+                  std::uniform_int_distribution<int> dis(0,NodeNum-1);
                   int dest = dis(gen);
 
                   Packet packet(id,dest);
@@ -110,8 +110,8 @@
                       pq.pop();
 
                       for (int v = 0; v < n; v++) { // Iterate over all neighbors of u
-                          if (AdjMatrix[u][v] != 0) { // If there is an edge from u to v
-                              int alt = dist[u] + AdjMatrix[u][v]; // Calculate the new distance to v
+                          if ((*adjmatrix)[u][v] != 0) { // If there is an edge from u to v
+                              int alt = dist[u] + (*adjmatrix)[u][v]; // Calculate the new distance to v
                               if (alt < dist[v]) { // If the new distance is smaller than the current distance to v
                                   dist[v] = alt; // Update the distance to v
                                   prev[v] = u; // Set the previous node of v to u
@@ -128,7 +128,8 @@
                       path = std::to_string(prev[node]) + path;
                       node = prev[node];
                   }
-
+                  std::cout<<"shorest path"<<path<<" From "<<ID<<"TO"<<p.GetDestination()<<std::endl;
+                
                   p.SetPath(path);
           }
 
@@ -136,6 +137,7 @@
           void Node::SendACK(){}
           void Node::CheckNode(){
                 if(count == LIFETIME){
+                          std::cout<<"NODE DEAD: "<<ID<<std::endl;
                           STATUS = 0;
                 }
                 if(count%NEWPACKETDELAY == 0){
