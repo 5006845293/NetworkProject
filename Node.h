@@ -30,13 +30,12 @@ protected:
           int LinkLength2;
           int LinkLength3;
           int NodeNum;
-          int (*Adjmatrix)[1000];
           
 
 public:
     //Constructors
           Node();
-          Node(int ID, int NodeNum, int (*arr)[1000]);
+          Node(int ID, int NodeNum);
 
     
     //Getters

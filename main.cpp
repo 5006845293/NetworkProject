@@ -5,6 +5,8 @@
 #include "Counter.h"
 
 #define MAXIMUM 10
+
+void DisplayMenu();
 int main(){
 
         DisplayMenu();
@@ -35,7 +37,7 @@ void DisplayMenu(){
                       for(i = 0;i<Nodes;i++){
                             Network.GetNode(i).CheckNode();
                       }
-                      NetWork.UpdateMatrix();
+                      Network.UpdateMatrix();
                       increment();
                 }
         }

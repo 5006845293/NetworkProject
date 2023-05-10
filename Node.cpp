@@ -4,7 +4,7 @@
 //Constructors
           Node::Node(){}
           
-          Node::Node(int ID, int NodeNum, int (*arr)[1000]) : ID(ID), NodeNum(NodeNum){
+          Node::Node(int ID, int NodeNum): ID(ID), NodeNum(NodeNum){
                 std::cout<<"New Node Created: "<<ID<<std::endl;
                 STATUS = 1;
                 SetLinkLengths();

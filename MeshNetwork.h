@@ -12,9 +12,9 @@ class MeshNetwork{
 
 protected:
     //Attributes
-    Node Nodes[MAXIMUM];
-    int NODES;
-    
+          Node Nodes[MAXIMUM];
+          int NODES;
+          std::vector<std::vector<int>> AdjMatrix;
 
 public:
     //Constructors
@@ -23,11 +23,12 @@ public:
 
     
     //Getters
-    Node& GetNode(int index);
+          Node& GetNode(int index);
     //Setters
 
     //Helper Function
-    std::vector<Node*> createLinks(int NODES);
-    void MakeAdjMatrix();
+          std::vector<Node*> createLinks(int NODES);
+          void MakeAdjMatrix();
+          void UpdateMatrix();
 };
 #endif

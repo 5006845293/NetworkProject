@@ -38,8 +38,8 @@ MeshNetwork::MeshNetwork(int NODES): NODES(NODES){
 }
 
 void MeshNetwork::MakeAdjMatrix(){
+  AdjMatrix.resize(NODES, std::vector<int>(NODES));
 
-          int AdjMatrix[NODES][NODES];
   std::cout<<"Network created"<<NODES<<std::endl; 
   for(int i =0;i<NODES; i++){
           for(int j=0; j<NODES;j++){
